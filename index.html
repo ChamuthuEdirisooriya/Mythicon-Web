@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MYTHICON</title>
+    <link rel="icon" href="images/Logo.png" type="image/png">
+    <style>
+        @font-face {
+            font-family: 'Concert One';
+            font-style: normal;
+            font-weight: normal;
+            font-display: swap;
+            src: url(Fonts/ConcertOne-Regular.woff2) format('woff2');
+        }
+
+        @font-face {
+            font-family: 'Concert One';
+            font-style: normal;
+            font-weight: normal;
+            font-display: swap;
+            src: url(Fonts/ConcertOne-Regular.woff) format('woff');
+        }
+
+        @font-face {
+            font-family: 'Exo 2';
+            font-style: normal;
+            font-weight: normal;
+            font-display: swap;
+            src: url(Fonts/Exo2-Regular.woff2) format('woff2');
+        }
+
+        @font-face {
+            font-family: 'Exo 2';
+            font-style: normal;
+            font-weight: normal;
+            font-display: swap;
+            src: url(Fonts/Exo2-Regular.woff) format('woff');
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-image: url(Images/0LoZ8u.png);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: rgb(37, 37, 37);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #0066cc;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #004d99;
+        }
+
+        .navbar {
+            width: 100%;
+            height: 15%;
+            display: flex;
+            flex-direction: row;
+            background-color: rgba(10, 10, 10, 0.5);
+            padding: 15px;
+            position: fixed;
+            z-index: 99;
+        }
+
+        .navbar-logo {
+            width: auto;
+            height: 90%;
+        }
+
+        .nav-items {
+            width: 60%;
+            height: 100%;
+            right: 0;
+            margin-left: auto;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .nav-item {
+            text-transform: uppercase;
+            text-decoration: none;
+            height: 60%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: "Concert One", sans-serif;
+            color: #ffffff;
+            font-size: 1.5rem;
+        }
+
+        nav div a {
+            position: relative;
+        }
+
+        nav div a:hover {
+            color: #0066cc;
+        }
+
+        .nav-item::before {
+            content: '';
+            display: block;
+            height: 5px;
+            background-color: #33cccc;
+            position: absolute;
+            bottom: 0;
+            width: 0%;
+            transition: all ease-in-out 250ms;
+        }
+
+        nav div a:hover::before {
+            width: 100%;
+        }
+
+        .mythicon-home {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            font-family: "Exo 2";
+        }
+
+        .text-logo {
+            width: 90%;
+            height: auto;
+        }
+
+        .vision {
+            font-size: 2.5rem;
+            margin-top: 0;
+            margin-bottom: 100px;
+            color: #b5ffff;
+            text-align: center;
+        }
+
+        .whats-new {
+            text-decoration: none;
+            color: #ffffff;
+            border: 1px solid white;
+            padding: 10px;
+            font-weight: 700;
+            transition: .6s;
+            overflow: hidden;
+        }
+
+        .whats-new:hover {
+            color: #33cccc;
+            border-color: #33cccc;
+            transform: scale(1.3);
+        }
+
+        .mythicon-section {
+            background-color: #1a1d22;
+            display: flex;
+            flex-direction: column;
+            padding: 7.5%;
+        }
+
+        .products-flex {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+            color: #0066cc;
+            font-family: "Concert One", sans-serif;
+            font-size: 3rem;
+        }
+
+        .border {
+            width: 160px;
+            height: 10px;
+            background: #33cccc;
+            margin: 10px auto 50px auto;
+        }
+
+        .sub-border {
+            width: 160px;
+            height: 5px;
+            background: #0066cc;
+            margin-top: 10px;
+        }
+
+        :not(h1) {
+            font-family: "Exo 2";
+        }
+
+        .product-img {
+            max-width: 30%;
+            height: auto;
+            margin: 50px 200px 50px 0;
+        }
+
+        .product-description {
+            font-size: 1.5rem;
+            color: #ffffff;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .sub-heading {
+            font-size: 2rem;
+            color: #b5ffff;
+        }
+
+        .mythicode-flex {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .app-store {
+            width: 50%;
+            height: auto;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        .mythicode-description {
+            font-size: 1.5rem;
+            color: #ffffff;
+            font-weight: 700;
+
+        }
+
+        .mythicode-content {
+            padding-right: 100px;
+            margin-top: 20px;
+        }
+
+        .mythicode-list {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-top: 10px;
+            list-style-type: square;
+            padding-right: 100px;
+        }
+
+        .mythicode-list li {
+            margin-bottom: 5px;
+        }
+
+        .mythicode-left {
+            max-width: 75%;
+        }
+
+        .store-searchbar {
+            display: flex;
+            flex-direction: row;
+            height: 40px;
+            padding: 10px;
+            align-items: center;
+        }
+
+        .search-button {
+            float: right;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #2f3640;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.4s;
+            cursor: pointer;
+        }
+
+        .search-text {
+            border: none;
+            background: none;
+            outline: none;
+            float: left;
+            padding: 0;
+            color: white;
+            font-size: 16px;
+            transition: 0.4s;
+            line-height: 40px;
+            width: 0px;
+        }
+
+        .store-searchbar:hover>.search-text {
+            width: 350px;
+            padding: 0 6px;
+        }
+
+        .store-searchbar:hover>.search-button {
+            background: #ffffff;
+        }
+
+        .store-flex {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .store-right {
+            display: flex;
+            flex-direction: column;
+            margin-left: auto;
+        }
+
+        .store-card {
+            position: relative;
+            width: 320px;
+            height: 420px;
+            background: #122936;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .store-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            width: 100%;
+            height: 100%;
+            background: #0066cc;
+            transform: skewY(345deg);
+            transition: 0.5s;
+        }
+
+        .store-card:hover::before {
+            top: -70%;
+            transform: skewY(390deg);
+        }
+
+        .store-card .imgBx {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 20px;
+            z-index: 1;
+        }
+
+        .store-card .imgBx img {
+            max-width: 100%;
+            transition: 0.5s;
+        }
+
+        .store-card:hover .imgBx img {
+            max-width: 50%;
+        }
+
+        .store-card .contentBx {
+            position: relative;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 1;
+        }
+
+        .store-card .contentBx h3 {
+            font-size: 18px;
+            color: #ffffff;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .store-card .contentBx .price {
+            font-size: 24px;
+            color: #ffffff;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .store-card .contentBx .buy {
+            position: relative;
+            top: 200px;
+            opacity: 0;
+            padding: 10px 30px;
+            margin-top: 15px;
+            color: #ffffff;
+            background: #0066cc;
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.5s;
+            cursor: pointer;
+        }
+
+        .store-card:hover .contentBx .buy {
+            top: 0;
+            opacity: 1;
+        }
+
+        .store-card-div {
+            display: flex;
+            flex-direction: row;
+            margin-top: 50px;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .inner {
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .col {
+            flex: 33.33%;
+            max-width: 33.33%;
+            padding: 15px;
+        }
+
+        .review {
+            background: #2f3640;
+            padding: 30px;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .review img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+
+        .name {
+            font-size: 20px;
+            text-transform: uppercase;
+            margin: 20px 0;
+        }
+
+        .about-mythicon {
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            font-size: 1.5rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .contact-flex {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .contact-right {
+            margin-left: auto;
+        }
+
+        .contact-us-form {
+            color: #b5ffff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-heading {
+            margin-bottom: 5px;
+        }
+
+        .contact-us-input {
+            color: #ffffff;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            width: 30em;
+            height: 2em;
+            background: #2f3640;
+            border: none;
+            padding: 3% 2%;
+        }
+
+        .contact-us-textarea {
+            height: 10em;
+            resize: none;
+            margin-bottom: 20px;
+        }
+
+        .contact-us-input:focus {
+            outline: none;
+            border: 1px solid #0066cc;
+        }
+
+        .contact-us-button {
+            text-align: center;
+            width: 15%;
+            color: #b5ffff;
+            border: #33cccc 2px solid;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .contact-us-button:hover {
+            color: #1a1d22;
+            background: #0066cc;
+            transition: 0.5s;
+        }
+
+        .contact-list {
+            list-style-type: square;
+            color: #ffffff;
+            font-size: 1.2rem;
+            margin-top: 10px;
+            margin-bottom: 50px;
+        }
+
+        .stores {
+            list-style-type: square;
+            color: #ffffff;
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        .stores li a {
+            color: #0066cc;
+        }
+
+        footer {
+            text-align: center;
+            width: 100%;
+            height: 3em;
+            background: #2f3640;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <img src="Images/Logo.png" alt="Logo" class="navbar-logo">
+        <div class="nav-items">
+            <a href="#home" class="nav-home nav-item">Home</a>
+            <a href="#products" class="nav-products nav-item">Products</a>
+            <a href="#mythicode" class="nav-mythicode nav-item">Mythicode</a>
+            <a href="#store" class="nav-shop nav-item">Store</a>
+            <a href="#reviews" class="nav-reviews nav-item">Reviews</a>
+            <a href="#about" class="nav-about-us nav-item">About Us</a>
+            <a href="#contact" class="nav-contact nav-item">Contact Us</a>
+        </div>
+    </nav>
+    <div class="mythicon-home" id="home">
+        <img src="images/Text Logo.png" alt="Text Logo" class="text-logo">
+        <h2 class="vision">Where the Myths Design the Future of the Coders</h2>
+        <a href="#products" class="whats-new">See What's New</a>
+    </div>
+    <div class="mythicon-products mythicon-section" id="products">
+        <h1 class="products-heading">OUR PRODUCTS</h1>
+        <div class="border"></div>
+        <div class="mythicon-pegasus">
+            <h2 class="pegasus-heading sub-heading">Have a Look at All New MYTHICON PEGASUS<sup
+                    class="sup-text"><small>TM</small></sup></h2>
+            <div class="sub-border"></div>
+            <div class="products-flex">
+                <img src="images/pegasus-toy.png" alt="The Mythicon Pegasus" class="product-img pegasus-toy">
+                <p class="pegasus-description product-description"> This
+                    time, the toy robot takes form of the magical creature Pegasus and will also be introduced with
+                    different color sets & sizes. Mythicon Pegasus can also be controlled with the Mythicode app
+                    allowing kids to learn and play through fun coding challenges & special missions.</p>
+            </div>
+        </div>
+        <div class="mythicon-toothless">
+            <h2 class="toothless-heading sub-heading">The Alpha Dragon Joins Mythicon</h2>
+            <div class="sub-border"></div>
+            <div class="products-flex">
+                <img src="images/toothless toy.png" alt="The Mythicon Toothless" class="product-img toothless-toy">
+                <p class="toothless-description product-description">In collaboration with DreamWorks Animation LLC,
+                    Mythicon is proud to launch The Mythicon Toothless, one
+                    of the most adorable and loved animated characters in the world.</p>
+            </div>
+        </div>
+        <div class="mythicon-unicorn">
+            <h2 class="unicorn-heading sub-heading">A Legend from the Past</h2>
+            <div class="sub-border"></div>
+            <div class="products-flex">
+                <img src="images/unicorn-toy.png" alt="The Mythicon Unicorn" class="product-img unicorn-toy">
+                <p class="unicorn-description product-description">Lorem ipsum, dolor sit amet consectetur adipisicing
+                    elit. Dignissimos,
+                    dolorem soluta? Commodi assumenda molestiae nesciunt vel veritatis laudantium harum, labore quidem.
+                    Dolor, voluptatibus enim. Praesentium ea facere eaque amet harum?</p>
+            </div>
+        </div>
+    </div>
+    <div class="mythicon-mythicode mythicon-section" id="mythicode">
+        <h1 class="mythicode-heading">MYTHICODE</h1>
+        <div class="border"></div>
+        <div class="mythicode-flex">
+            <div class="mythicode-left">
+                <h2 class="mythicode-sub-heading sub-heading">Path to Become a Mythical Programmer</h2>
+                <div class="sub-border"></div>
+                <div class="mythicode-content">
+                    <p class="mythicode-description">Mythicode app allows the kids to control their
+                        Mythicon
+                        robot's movements, lights & sounds by entering different codes.</p>
+                    <ul class="mythicode-list">
+                        <li>In the Mythicode App, beginners can start out using basic coding commands & can encounter
+                            with
+                            complex
+                            codes as they level up.</li>
+                        <li>Completing coding challenges can unlock various levels while completing special
+                            missions can unlock secret codes. This allows kids to learn about new programs.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mythicode-right">
+                <h2 class="mythicode-download-text sub-heading">Join the Mythicon Community today</h2>
+                <div class="sub-border"></div>
+                <img src="images/play store and app store.png" alt="Get it on Google Play | Available on the App Store"
+                    class="app-store">
+            </div>
+        </div>
+    </div>
+    <div class="mythicon-store mythicon-section" id="store">
+        <div class="left-bg"></div>
+        <h1 class="store-heading">STORE</h1>
+        <div class="border"></div>
+        <div class="store-flex">
+            <div class="store-left">
+                <h2 class="store-sub-heading sub-heading">Buy Your Mythicon Robot Today</h2>
+                <div class="sub-border"></div>
+            </div>
+            <div class="store-right">
+                <div class="store-searchbar">
+                    <input type="text" placeholder="Search for Your Favourite Mythicon Robot..." class="search-text">
+                    <span class="search-button">
+                        <img src="images/search.svg" alt="" class="search-icon">
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="store-card-div">
+            <div class="store-card">
+                <div class="imgBx">
+                    <img src="images/Mythicon L.png" alt="Mythicon Unicorn">
+                </div>
+                <div class="contentBx">
+                    <h3>Mythicon Unicorn</h3>
+                    <h2 class="price">$40.<small>99</small></h2>
+                    <p class="buy">Add to Cart</p>
+                </div>
+            </div>
+            <div class="store-card">
+                <div class="imgBx">
+                    <img src="images/Mythicon L.png" alt="Mythicon Toothless">
+                </div>
+                <div class="contentBx">
+                    <h3>Mythicon Toothless</h3>
+                    <h2 class="price">$40.<small>99</small></h2>
+                    <p class="buy">Add to Cart</p>
+                </div>
+            </div>
+            <div class="store-card">
+                <div class="imgBx">
+                    <img src="images/Mythicon L.png" alt="Mythicon Pegasus">
+                </div>
+                <div class="contentBx">
+                    <h3>Mythicon Pegasus</h3>
+                    <h2 class="price">$40.<small>99</small></h2>
+                    <p class="buy">Add to Cart</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mythicon-reviews mythicon-section" id="reviews">
+        <div class="inner">
+            <h1>REVIEWS</h1>
+            <div class="border"></div>
+            <div class="row">
+                <div class="col">
+                    <div class="review">
+                        <img src="images/person 1.jpg" alt="Person#1">
+                        <div class="name">Full Name</div>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui omnis dolorem non esse repellat,
+                            libero perspiciatis iure, quasi quo autem itaque beatae minus voluptates, recusandae optio
+                            ad eligendi eos nihil!</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="review">
+                        <img src="images/person 2.jpeg" alt="Person#1">
+                        <div class="name">Full Name</div>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui omnis dolorem non esse repellat,
+                            libero perspiciatis iure, quasi quo autem itaque beatae minus voluptates, recusandae optio
+                            ad eligendi eos nihil!</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="review">
+                        <img src="images/person 3.jpg" alt="Person#1">
+                        <div class="name">Full Name</div>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui omnis dolorem non esse repellat,
+                            libero perspiciatis iure, quasi quo autem itaque beatae minus voluptates, recusandae optio
+                            ad eligendi eos nihil!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mythicon-about mythicon-section" id="about">
+        <h1 class="about-heading">ABOUT US</h1>
+        <div class="border"></div>
+        <p class="about-mythicon">
+            Mythicon Co. is a growing company which creates technology-based toys with the aim of teaching kids to
+            code
+            while bringing fun to their playtime. Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci
+            odio
+            odit ex laboriosam laudantium porro, commodi neque eum praesentium ad doloremque esse et facilis,
+            recusandae
+            illum. Ipsa sequi saepe assumenda. Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, et
+            unde earum sequi nostrum accusantium repudiandae dicta! Hic, eos! Mollitia, ea eum? Odit beatae id
+            voluptatem vero optio molestias corporis. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta
+            delectus facilis sapiente architecto inventore? Placeat quod explicabo, atque nemo aperiam et expedita iure
+            repellat impedit. Quo suscipit rem voluptatem adipisci. Lorem ipsum dolor sit amet consectetur adipisicing
+            elit. Ea repellendus perferendis dignissimos ex ab iusto perspiciatis nisi enim aliquid aperiam tempora
+            eligendi cupiditate assumenda eos quas non laborum, unde voluptate.
+        </p>
+    </div>
+    <div class="mythicon-contact mythicon-section" id="contact">
+        <h1 class="contact-heading">CONTACT US</h1>
+        <div class="border"></div>
+        <div class="contact-flex">
+            <form action="" class="contact-us-form">
+                <h3 class="form-heading">Name</h3>
+                <input type="text" class="contact-us-input">
+                <h3 class="form-heading">Email Address</h3>
+                <input type="email" class="contact-us-input">
+                <h3 class="form-heading">Contact No:</h3>
+                <input type="text" class="contact-us-input">
+                <h3 class="form-heading">Message</h3>
+                <textarea class="contact-us-input contact-us-textarea"></textarea>
+                <h3 class="contact-us-button">Send</h3>
+            </form>
+            <div class="contact-right">
+                <div class="contact-details">
+                    <h2 class="contact-details-heading sub-heading">Contact Details</h2>
+                    <div class="sub-border"></div>
+                    <ul class="contact-list">
+                        <li>Address: Grandview, Missouri, United States</li>
+                        <li>Call: 1-800-758-738</li>
+                        <li>Email Address: info@mythicon.com</li>
+                    </ul>
+                </div>
+                <div class="where-to-buy">
+                    <h2 class="where-to-buy-heading sub-heading">Where to Buy Our Products</h2>
+                    <div class="sub-border"></div>
+                    <ul class="stores">
+                        <li><a href="#store">Mythicon Online Store</a> (Worldwide Free Delivery)</li>
+                        <li>eBay (Worldwide Delivery)</li>
+                        <li>Amazon (Worlwide Delivery)</li>
+                        <li>US Toy Store Co., Inc. (USA)</li>
+                        <li>Cyber Toys Co.(Europe)</li>
+                        <li>Fx Creations (Asia & Africa)</li>
+                        <li>Megatronics Marketing (South Asia)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        Copyright&copy;2020 Mythicon Co. All rights reserved.
+    </footer>
+</body>
+
+</html>
