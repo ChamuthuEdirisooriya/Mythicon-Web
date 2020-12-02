@@ -8,40 +8,41 @@
     <link rel="icon" href="Images/Logo.png" type="image/png">
     <style>
         @font-face {
-            font-family: 'Concert One';
+            font-family: "Concert One";
             font-style: normal;
             font-weight: normal;
             font-display: swap;
-            src: url(Fonts/ConcertOne-Regular.woff2) format('woff2');
+            src: url(Fonts/ConcertOne-Regular.woff2) format("woff2");
         }
 
         @font-face {
-            font-family: 'Concert One';
+            font-family: "Concert One";
             font-style: normal;
             font-weight: normal;
             font-display: swap;
-            src: url(Fonts/ConcertOne-Regular.woff) format('woff');
+            src: url(Fonts/ConcertOne-Regular.woff) format("woff");
         }
 
         @font-face {
-            font-family: 'Exo 2';
+            font-family: "Exo 2";
             font-style: normal;
             font-weight: normal;
             font-display: swap;
-            src: url(Fonts/Exo2-Regular.woff2) format('woff2');
+            src: url(Fonts/Exo2-Regular.woff2) format("woff2");
         }
 
         @font-face {
-            font-family: 'Exo 2';
+            font-family: "Exo 2";
             font-style: normal;
             font-weight: normal;
             font-display: swap;
-            src: url(Fonts/Exo2-Regular.woff) format('woff');
+            src: url(Fonts/Exo2-Regular.woff) format("woff");
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
+            line-height: 130%;
         }
 
         html,
@@ -72,6 +73,7 @@
             background: #004d99;
         }
 
+        /*navbar*/
         .navbar {
             width: 100%;
             height: 15%;
@@ -81,6 +83,7 @@
             padding: 15px;
             position: fixed;
             z-index: 99;
+            flex-wrap: wrap;
         }
 
         .navbar-logo {
@@ -95,8 +98,9 @@
             margin-left: auto;
             display: flex;
             flex-direction: row;
-            justify-content: space-evenly;
             align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
         }
 
         .nav-item {
@@ -110,6 +114,8 @@
             font-family: "Concert One", sans-serif;
             color: #ffffff;
             font-size: 1.5rem;
+            flex: 1 0 auto;
+            flex-wrap: wrap;
         }
 
         nav div a {
@@ -121,7 +127,7 @@
         }
 
         .nav-item::before {
-            content: '';
+            content: "";
             display: block;
             height: 5px;
             background-color: #33cccc;
@@ -132,9 +138,19 @@
         }
 
         nav div a:hover::before {
-            width: 100%;
+            width: 80%;
         }
 
+        @media screen and (max-width: 1185px) {
+
+            html,
+            body {
+                background-size: auto 100%;
+                background-position: center center;
+            }
+        }
+
+        /*home*/
         .mythicon-home {
             display: flex;
             flex-direction: column;
@@ -160,20 +176,50 @@
 
         .whats-new {
             text-decoration: none;
-            color: #ffffff;
-            border: 1px solid white;
             padding: 10px;
-            font-weight: 700;
-            transition: .6s;
+            border: 3px solid #ffffff;
+            color: #ffffff;
+            transition: all 0.3s;
+            transition-delay: 0.1s;
+            position: relative;
             overflow: hidden;
+            font-weight: 700;
+        }
+
+        .arrow {
+            transition: margin 0.3s;
+        }
+
+        .whats-new::before {
+            content: "";
+            position: absolute;
+            width: 200px;
+            height: 120px;
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateX(-110%) rotate(45deg);
+            transition: all 1.2s cubic-bezier(0.15, 1, 0.19, 1);
         }
 
         .whats-new:hover {
-            color: #33cccc;
-            border-color: #33cccc;
-            transform: scale(1.3);
+            border: 3px solid #ffffff;
+            color: #ffffff;
         }
 
+        .whats-new:active {
+            background-color: #ffffff;
+            color: #111;
+        }
+
+        .whats-new:hover::before {
+            background-color: #ffffff;
+            transform: translate(115%, -50px) rotate(90deg);
+        }
+
+        .whats-new:hover .arrow {
+            margin-left: 10px;
+        }
+
+        /*products*/
         .mythicon-section {
             background-color: #1a1d22;
             display: flex;
@@ -233,6 +279,7 @@
             color: #b5ffff;
         }
 
+        /*mythicode*/
         .mythicode-flex {
             display: flex;
             flex-direction: row;
@@ -249,7 +296,6 @@
             font-size: 1.5rem;
             color: #ffffff;
             font-weight: 700;
-
         }
 
         .mythicode-content {
@@ -273,6 +319,26 @@
             max-width: 75%;
         }
 
+        .mythicode-qr {
+            margin-top: 50px;
+            color: #ffffff;
+            font-size: 1.2rem;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .qr-scan {
+            height: 350px;
+            width: auto;
+        }
+
+        .qr-description {
+            padding: 0 300px 0 20px;
+        }
+
+        /*store*/
         .store-searchbar {
             display: flex;
             flex-direction: row;
@@ -281,12 +347,16 @@
             align-items: center;
         }
 
+        .search-icon {
+            fill: #0066cc;
+        }
+
         .search-button {
             float: right;
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: #2f3640;
+            background: #b5ffff;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -337,7 +407,7 @@
         }
 
         .store-card::before {
-            content: '';
+            content: "";
             position: absolute;
             top: -50%;
             width: 100%;
@@ -424,6 +494,7 @@
             align-items: center;
         }
 
+        /*reviews*/
         .inner {
             max-width: 1200px;
             margin: auto;
@@ -462,6 +533,7 @@
             margin: 20px 0;
         }
 
+        /*about us*/
         .about-mythicon {
             color: #ffffff;
             display: flex;
@@ -471,6 +543,7 @@
             align-items: center;
         }
 
+        /*contact us*/
         .contact-flex {
             display: flex;
             flex-direction: row;
@@ -546,16 +619,192 @@
             color: #0066cc;
         }
 
+        /*footer*/
         footer {
             text-align: center;
             width: 100%;
-            height: 3em;
+            height: 15em;
             background: #2f3640;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
             color: #ffffff;
+        }
+
+        .social-btns svg {
+            width: 1.4em;
+            height: 1.4em;
+        }
+
+        .social-btns .btn,
+        .social-btns .btn::before,
+        .social-btns .btn .fa {
+            transition: all 0.35s;
+            transition-timing-function: cubic-bezier(0.31, -0.105, 0.43, 1.59);
+        }
+
+        .social-btns .btn::before {
+            top: 90%;
+            left: -110%;
+        }
+
+        .social-btns .btn .fa {
+            transform: scale(0.8);
+        }
+
+        .social-btns .btn.facebook::before {
+            background-color: #4267b2;
+        }
+
+        .social-btns .btn.facebook .fa {
+            fill: #4267b2;
+        }
+
+        .social-btns .btn.twitter::before {
+            background-color: #1da1f2;
+        }
+
+        .social-btns .btn.twitter .fa {
+            fill: #1da1f2;
+        }
+
+        .social-btns .btn.instagram::before {
+            background: linear-gradient(90deg,
+                    #405de6,
+                    #5b51d8,
+                    #833ab4,
+                    #c13584,
+                    #e1306c,
+                    #fd1d1d,
+                    #f56040,
+                    #f77737,
+                    #fcaf45,
+                    #ffdc80);
+        }
+
+        .social-btns .btn.instagram .fa {
+            fill: url(#insta-gradient) #e1306c;
+        }
+
+        .social-btns .btn.github::before {
+            background-color: #000000;
+        }
+
+        .social-btns .btn.github .fa {
+            fill: #000000;
+        }
+
+        .social-btns .btn.youtube::before {
+            background-color: #ff0000;
+        }
+
+        .social-btns .btn.youtube .fa {
+            fill: #ff0000;
+        }
+
+        .social-btns .btn:focus::before,
+        .social-btns .btn:hover::before {
+            top: -10%;
+            left: -10%;
+        }
+
+        .social-btns .btn:focus .fa,
+        .social-btns .btn:hover .fa {
+            fill: #ffffff;
+            transform: scale(1);
+        }
+
+        .social-btns {
+            height: 65px;
+            margin: 20px auto 60px auto;
+            text-align: center;
+            font-size: 0;
+        }
+
+        .social-btns .btn {
+            display: inline-block;
+            background-color: #ffffff;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            margin: 0 10px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 28%;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            opacity: 0.99;
+            cursor: pointer;
+        }
+
+        .social-btns .btn:before {
+            content: "";
+            width: 120%;
+            height: 120%;
+            position: absolute;
+            transform: rotate(45deg);
+        }
+
+        .social-btns .btn .fa {
+            font-size: 25px;
+            vertical-align: middle;
+        }
+
+        .connect {
+            font-size: 1.8rem;
+            padding-top: 30px;
+        }
+
+        @media screen and (max-width: 905px) {
+
+            .products-flex,
+            .mythicode-flex,
+            .store-card-div,
+            .contact-flex {
+                flex-direction: column;
+            }
+
+            .mythicode-content,
+            .mythicode-list {
+                padding-right: 0;
+            }
+
+            .mythicode-left {
+                max-width: 100%;
+            }
+
+            .qr-description {
+                padding: 0 0 0 20px;
+            }
+
+            .col {
+                flex: 100%;
+                max-width: 100%;
+            }
+
+            .contact-right {
+                margin-left: 0;
+            }
+
+            .product-img {
+                margin: 50px 0 0 0;
+                max-width: 100%;
+            }
+
+            .navbar {
+                height: 7.5%;
+            }
+
+            .nav-item {
+                font-size: 1rem;
+            }
+        }
+
+        @media screen and (max-width: 729px) {
+            .contact-us-input {
+                width: 13em;
+            }
+
+            .contact-us-button {
+                width: 20%;
+            }
         }
     </style>
 </head>
@@ -576,7 +825,7 @@
     <div class="mythicon-home" id="home">
         <img src="Images/Text Logo.png" alt="Text Logo" class="text-logo">
         <h2 class="vision">Where the Myths Design the Future of the Coders</h2>
-        <a href="#products" class="whats-new">See What's New</a>
+        <a href="#products" class="whats-new">See What's New<span class="arrow"> &#x279D</span></a>
     </div>
     <div class="mythicon-products mythicon-section" id="products">
         <h1 class="products-heading">OUR PRODUCTS</h1>
@@ -604,7 +853,7 @@
             </div>
         </div>
         <div class="mythicon-unicorn">
-            <h2 class="unicorn-heading sub-heading">A Legend from the Past</h2>
+            <h2 class="unicorn-heading sub-heading">From Mesopotamian Artworks to Mythicon</h2>
             <div class="sub-border"></div>
             <div class="products-flex">
                 <img src="Images/unicorn-toy.png" alt="The Mythicon Unicorn" class="product-img unicorn-toy">
@@ -635,6 +884,13 @@
                             missions can unlock secret codes. This allows kids to learn about new programs.</li>
                     </ul>
                 </div>
+                <div class="mythicode-qr">
+                    <img src="Images/183078301.png" alt="Scanning QR Code" class="qr-scan">
+                    <p class="qr-description">Scan the QR Code on the Mythicon Robot's Documentation with the Mythicode
+                        app
+                        and the Mythicon Robot
+                        will be all yours to play with.</p>
+                </div>
             </div>
             <div class="mythicode-right">
                 <h2 class="mythicode-download-text sub-heading">Join the Mythicon Community today</h2>
@@ -656,7 +912,12 @@
                 <div class="store-searchbar">
                     <input type="text" placeholder="Search for Your Favourite Mythicon Robot..." class="search-text">
                     <span class="search-button">
-                        <img src="Images/Search-Icon.svg" alt="" class="search-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                            class="search-icon">
+                            <path d="M0 0h24v24H0z" fill="none" />
+                            <path
+                                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                        </svg>
                     </span>
                 </div>
             </div>
@@ -702,7 +963,7 @@
                 <div class="col">
                     <div class="review">
                         <img src="Images/person 1.jpg" alt="Person#1">
-                        <div class="name">Full Name</div>
+                        <div class="name">Name</div>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui omnis dolorem non esse repellat,
                             libero perspiciatis iure, quasi quo autem itaque beatae minus voluptates, recusandae optio
                             ad eligendi eos nihil!</p>
@@ -711,7 +972,7 @@
                 <div class="col">
                     <div class="review">
                         <img src="Images/person 2.jpeg" alt="Person#1">
-                        <div class="name">Full Name</div>
+                        <div class="name">Name</div>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui omnis dolorem non esse repellat,
                             libero perspiciatis iure, quasi quo autem itaque beatae minus voluptates, recusandae optio
                             ad eligendi eos nihil!</p>
@@ -720,7 +981,7 @@
                 <div class="col">
                     <div class="review">
                         <img src="Images/person 3.jpg" alt="Person#1">
-                        <div class="name">Full Name</div>
+                        <div class="name">Name</div>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui omnis dolorem non esse repellat,
                             libero perspiciatis iure, quasi quo autem itaque beatae minus voluptates, recusandae optio
                             ad eligendi eos nihil!</p>
@@ -790,7 +1051,59 @@
         </div>
     </div>
     <footer>
-        Copyright&copy;2020 Mythicon Co. All rights reserved.
+        <h2 class="connect">Connect with Us</h2>
+        <div class="social-btns">
+            <span class="btn facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="fa fa-facebook">
+                    <!-- Font Awesome Free 5.15.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) -->
+                    <path
+                        d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
+                </svg>
+            </span>
+            <span class="btn twitter">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="fa fa-twitter">
+                    <!-- Font Awesome Free 5.15.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) -->
+                    <path
+                        d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" />
+                </svg>
+            </span>
+            <span class="btn instagram">
+                <svg style="width:0; height:0; position:absolute;" aria-hidden="true" focusable="false">
+                    <linearGradient id="insta-gradient" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#405de6" />
+                        <stop offset="11.111%" stop-color="#5B51D8" />
+                        <stop offset="22.222%" stop-color="#833AB4" />
+                        <stop offset="33.333%" stop-color="#C13584" />
+                        <stop offset="44.444%" stop-color="#E1306C" />
+                        <stop offset="55.555%" stop-color="#FD1D1D" />
+                        <stop offset="88.888%" stop-color="#f56040" />
+                        <stop offset="66.666%" stop-color="#F77737" />
+                        <stop offset="77.777%" stop-color="#FCAF45" />
+                        <stop offset="100%" stop-color="#FFDC80" />
+                    </linearGradient>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="fa fa-instagram">
+                    <!-- Font Awesome Free 5.15.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) -->
+                    <path
+                        d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+                </svg>
+            </span>
+            <span class="btn github">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="fa fa-github">
+                    <!-- Font Awesome Free 5.15.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) -->
+                    <path
+                        d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
+                </svg>
+            </span>
+            <span class="btn youtube">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="fa fa-youtube">
+                    <!-- Font Awesome Free 5.15.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) -->
+                    <path
+                        d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z" />
+                </svg>
+            </span>
+        </div>
+        <div class="copyright">Copyright&copy;2020 Mythicon Co. All rights reserved.</div>
     </footer>
 </body>
 
